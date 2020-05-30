@@ -55,17 +55,24 @@ In this challenge, transform a string into a series of words (or sequences of ch
 https://edabit.com/challenge/sHJmjMcZPiCsEujk6
 """
 def pilish_string(txt):
-    pi = "314159265358979"
-    output = []
-    a, b = 0, 0
-    for pi_char in pi:
-        a = b
-        b = a+int(pi_char)
-        if txt[a:b] != "":
-            output.append(txt[a:b])
-            continue
-        #check that last item in list is long enough, if not extend.
-        if len(output[-1]) < int(pi_char):
-            output[-1] = output[-1] + (output[-1][-1]* (pi_char-len(output[-1])))
-        break
-    return output
+	pi = "314159265358979"
+	output = []
+	a, b = 0, 0
+	char_count = 0
+	try:
+		for pi_char in pi:
+			a = b
+			b = a+int(pi_char)
+			if txt[a:b] != "":
+				output.append(txt[a:b])
+				char_count = int(pi_char)
+				continue
+			break
+	finally:
+		try:
+			#check that last item in list is long enough, if not extend.
+			if len(output[-1]) < int(char_count):
+				output[-1] = output[-1] + (output[-1][-1]* (char_count-len(output[-1])))
+		except(IndexError):
+			pass
+	return " ".join(output)
