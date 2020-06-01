@@ -76,3 +76,28 @@ def pilish_string(txt):
 		except(IndexError):
 			pass
 	return " ".join(output)
+
+
+"""
+A group of n prisoners stand in a circle awaiting execution. Starting from an arbitrary position(0), the executioner kills every kth person until one person remains standing, who is then granted freedom (see examples).
+
+Create a function that takes 2 arguments — the number of people to be executed n, and the step size k, and returns the original position (index) of the person who survives.
+https://edabit.com/challenge/4AjWvJdZpFEMbGALd
+"""
+def who_goes_free(n, k):
+	n = list(range(n))
+	while len(n) > 1:
+		if len(n) >= k:
+			offset = len(n) % k #determine offset after making one elimination round
+			index = k - 1
+			for i in range(len(n)//k):
+				n.pop(index+(i*(index)))
+			n = n[-offset:] + n[:-offset] #rearrange list after popping
+		else:
+		    index = (k % len(n))-1
+		    n.pop(index)
+		    offset = len(n) - index
+		    if len(n) == 1: break
+		    n = n[-offset:] + n[:-offset]
+	return n
+
