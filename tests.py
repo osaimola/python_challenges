@@ -52,5 +52,16 @@ class TestPilish(unittest.TestCase):
         self.assertEquals(pilish_string("HOWINEEDADRINKALCOHOLICINNATUREAFTERTHEHEAVYLECTURESINVOLVINGQUANTUMMECHANICSANDALLTHESECRETSOFTHEUNIVERSE"), "HOW I NEED A DRINK ALCOHOLIC IN NATURE AFTER THE HEAVY LECTURES INVOLVING QUANTUM MECHANICS")
         self.assertEquals(pilish_string("HOWINEEDADRINKALCOHOLICINNATUREAFTERTHEHEAVYCODING"), "HOW I NEED A DRINK ALCOHOLIC IN NATURE AFTER THE HEAVY CODINGGG")
 
+class TestWhoGoesFree(unittest.TestCase):
+    def who_goes_free(self):
+        self.assert_equals(who_goes_free(9, 2), 2)
+        self.assert_equals(who_goes_free(9, 3), 0)
+        self.assert_equals(who_goes_free(7, 2), 6)
+        self.assert_equals(who_goes_free(7, 3), 3)
+        self.assert_equals(who_goes_free(15, 4), 12)
+        self.assert_equals(who_goes_free(14, 3), 1)
+        self.assert_equals(who_goes_free(53, 7), 21)
+        self.assert_equals(who_goes_free(543, 21), 455)
+        self.assert_equals(who_goes_free(673, 13), 303)
 if __name__ == '__main__':
     unittest.main()
