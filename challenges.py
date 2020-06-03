@@ -99,5 +99,5 @@ def who_goes_free(n, k):
 		    offset = len(n) - index
 		    if len(n) == 1: break
 		    n = n[-offset:] + n[:-offset]
-	return n
+	return n[0]
 
